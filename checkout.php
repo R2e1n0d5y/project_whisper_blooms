@@ -68,7 +68,7 @@ mysqli_data_seek($query_keranjang, 0);
 
           <form id="form-metode" style="display: flex; flex-direction: column; gap: 1rem;">
             <label style="display: flex; align-items: center; gap: 1rem;">
-              <input type="radio" name="metode" value="dana-ambil" checked>
+              <input type="radio" name="metode" value="ambil" checked>
               <span>Ambil di Tempat (Tanpa Ongkir)</span>
             </label>
 
@@ -112,23 +112,25 @@ mysqli_data_seek($query_keranjang, 0);
       </div>
 
       <!-- Total -->
-      <div class="checkout-box mt-2">
-        <h3 class="box-title">Total Pembayaran:</h3>
-        <p class="total-harga">IDR <?= number_format($total, 0, ',', '.') ?></p>
+<div class="checkout-box mt-2">
+  <h3 class="box-title">Total Pembayaran:</h3>
+  <p class="total-harga">IDR <?= number_format($total, 0, ',', '.') ?></p>
 
-        <form action="proses_checkout.php" method="POST" id="formCheckout">
-          <input type="hidden" name="total_pembayaran" id="inputTotalPembayaran" value="<?= $total ?>">
-          <input type="hidden" name="alamat_pengiriman" id="inputAlamat" value="<?= isset($alamat_default) ? htmlspecialchars(
-            $alamat_default['jalan'] . ', RT ' . $alamat_default['rt'] . '/' . $alamat_default['rw'] . ', ' .
-            $alamat_default['desa'] . ', ' . $alamat_default['kecamatan'] . ', ' . $alamat_default['kota'] . ', ' . $alamat_default['provinsi']
-          ) : '' ?>">
+  <form action="proses_checkout.php" method="POST" id="formCheckout">
+    <input type="hidden" name="total_pembayaran" id="inputTotalPembayaran" value="<?= $total ?>">
+    <input type="hidden" name="alamat_pengiriman" id="inputAlamat" value="<?= isset($alamat_default) ? htmlspecialchars(
+      $alamat_default['jalan'] . ', RT ' . $alamat_default['rt'] . '/' . $alamat_default['rw'] . ', ' .
+      $alamat_default['desa'] . ', ' . $alamat_default['kecamatan'] . ', ' . $alamat_default['kota'] . ', ' . $alamat_default['provinsi']
+    ) : '' ?>">
+    <input type="hidden" name="metode_pembayaran" id="inputMetodePembayaran" value="ambil">
 
-          <div class="checkout-actions">
-            <button type="submit" class="btn-primary" <?= $alamat_count == 0 ? 'disabled' : '' ?>>Checkout</button>
-            <a href="keranjang.php" class="btn-secondary">Batal</a>
-          </div>
-        </form>
-      </div>
+    <div class="checkout-actions">
+      <button type="submit" class="btn-primary" <?= $alamat_count == 0 ? 'disabled' : '' ?>>Checkout</button>
+      <a href="keranjang.php" class="btn-secondary">Batal</a>
+    </div>
+  </form>
+</div>
+
     </div>
   </section>
 </section>
@@ -183,6 +185,39 @@ mysqli_data_seek($query_keranjang, 0);
         alert("Silakan tambahkan alamat terlebih dahulu sebelum checkout.");
       }
     });
+
+    document.addEventListener('DOMContentLoaded', function () {
+  const metodeRadios = document.querySelectorAll('input[name="metode"]');
+  const ongkirDisplay = document.getElementById('ongkir-display');
+  const metodeInput = document.getElementById('inputMetodePembayaran');
+
+  function updateOngkir() {
+    const selected = document.querySelector('input[name="metode"]:checked').value;
+    const ongkir = (selected === 'dana-kirim' || selected === 'cod') ? 5000 : 0;
+    const baseTotal = <?= $total ?>;
+    const totalWithOngkir = baseTotal + ongkir;
+
+    // Update tampilan ongkir
+    ongkirDisplay.textContent = `Rp${ongkir.toLocaleString('id-ID')}`;
+
+    // Update value hidden input
+    document.getElementById("inputTotalPembayaran").value = totalWithOngkir;
+
+    // Update metode pembayaran
+    metodeInput.value = selected;
+
+    // Update tampilan total harga
+    const totalHargaElement = document.querySelector(".total-harga");
+    totalHargaElement.textContent = `IDR ${totalWithOngkir.toLocaleString('id-ID')}`;
+  }
+
+  metodeRadios.forEach(radio => {
+    radio.addEventListener('change', updateOngkir);
+  });
+
+  updateOngkir(); // initial run
+});
+
   </script>
 </body>
 </html>
