@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+  --primary-peach: #FFB4A2;
+  --warm-cream: #FFF8F3;
+  --text-dark: #5D4E75;
+  --text-light: #8B7AA8;
+  --white: #fff;
+  --danger: #FF6B6B;
+  --success: #4ECDC4;
+  --border-color: rgba(255, 180, 162, 0.3);
+  --hover-peach: #ffa08f;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, var(--warm-cream) 0%, #fff0e6 100%);
+  color: var(--text-dark);
+  padding: 30px;
+}
+
+/* Container */
+.container {
+  background: var(--white);
+  padding: 40px;
+  max-width: 700px;
+  margin: 0 auto;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* Page Header */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.page-title {
+  font-size: 2rem;
+  color: var(--primary-peach);
+  margin-bottom: 5px;
+}
+
+.page-subtitle {
+  color: var(--text-light);
+  font-size: 1rem;
+}
+
+/* Form */
+form label {
+  display: block;
+  font-weight: 500;
+  margin-top: 15px;
+  margin-bottom: 6px;
+}
+
+form input,
+form textarea,
+form select {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 2px solid var(--border-color);
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+form textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+form input:focus,
+form textarea:focus,
+form select:focus {
+  border-color: var(--primary-peach);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 180, 162, 0.15);
+}
+
+/* Submit Button */
+.button-submit {
+  margin-top: 25px;
+  display: inline-block;
+  background: var(--primary-peach);
+  color: #fff;
+  font-weight: 600;
+  padding: 14px 28px;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  font-size: 1rem;
+  box-shadow: 0 4px 12px rgba(255, 180, 162, 0.3);
+  transition: all 0.3s ease;
+}
+
+.button-submit:hover {
+  background: var(--hover-peach);
+  box-shadow: 0 6px 18px rgba(255, 180, 162, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Tombol Kembali */
+.btn-view {
+  background: var(--success);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-view:hover {
+  background: #3dbcb3;
+  transform: translateY(-1px);
+}
+
+/* Tombol Sukses (opsional tambahan) */
+.btn-submit {
+  background: var(--success);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-submit:hover {
+  background: #3dbcb3;
+  transform: translateY(-1px);
+}
+
+/* Responsif */
+@media (max-width: 768px) {
+  .container {
+    padding: 25px;
+  }
+
+  .page-title {
+    font-size: 1.7rem;
+  }
+}

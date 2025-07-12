@@ -1,0 +1,527 @@
+/* =====================================================
+   EDIT PAGES CSS - Peach Theme
+   Compatible dengan kelola.css
+   ===================================================== */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@400;600;700&display=swap');
+
+:root {
+    --primary-peach: #FFB4A2;
+    --primary-lavender: #E6B3FF;
+    --dusty-pink: #F4B6C2;
+    --warm-cream: #FFF8F3;
+    --soft-sage: #B8D4C2;
+    --text-dark: #5D4E75;
+    --text-light: #8B7AA8;
+    --white: #FFFFFF;
+    --shadow: rgba(93, 78, 117, 0.1);
+    --danger: #FF6B6B;
+    --success: #4ECDC4;
+    --warning: #FFE66D;
+    --info: #74C0FC;
+    --border-color: rgba(255, 180, 162, 0.2);
+    --hover-bg: rgba(255, 180, 162, 0.1);
+    --gradient-primary: linear-gradient(135deg, var(--primary-peach), var(--dusty-pink));
+    --gradient-bg: linear-gradient(135deg, var(--warm-cream) 0%, #FFF5F0 100%);
+}
+
+/* =====================================================
+   RESET & BASE STYLES
+   ===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--gradient-bg);
+    color: var(--text-dark);
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* =====================================================
+   CONTAINER
+   ===================================================== */
+
+.container {
+    max-width: 700px;
+    margin: 0 auto;
+    background: var(--white);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px var(--shadow);
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 30px;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: var(--gradient-primary);
+}
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+
+h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    color: var(--primary-peach);
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--gradient-primary);
+    border-radius: 2px;
+}
+
+/* =====================================================
+   FORM STYLES
+   ===================================================== */
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* Form Groups */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Labels */
+label {
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 0.95rem;
+    margin-bottom: 5px;
+    position: relative;
+}
+
+label::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-primary);
+    transition: width 0.3s ease;
+}
+
+.form-group:focus-within label::after {
+    width: 100%;
+}
+
+/* Input Fields */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+textarea {
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    font-size: 1rem;
+    font-family: inherit;
+    background: rgba(255, 248, 243, 0.3);
+    color: var(--text-dark);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--primary-peach);
+    background: var(--white);
+    box-shadow: 0 0 0 4px rgba(255, 180, 162, 0.1);
+    transform: translateY(-2px);
+}
+
+/* Textarea */
+textarea {
+    resize: vertical;
+    min-height: 120px;
+    line-height: 1.6;
+}
+
+/* File Input */
+input[type="file"] {
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px dashed var(--border-color);
+    border-radius: 12px;
+    background: rgba(255, 248, 243, 0.3);
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+    position: relative;
+}
+
+input[type="file"]:hover {
+    border-color: var(--primary-peach);
+    background: var(--hover-bg);
+    transform: translateY(-2px);
+}
+
+input[type="file"]:focus {
+    outline: none;
+    border-color: var(--primary-peach);
+    box-shadow: 0 0 0 4px rgba(255, 180, 162, 0.1);
+}
+
+/* File Input Styling */
+input[type="file"]::file-selector-button {
+    padding: 8px 16px;
+    margin-right: 15px;
+    border: none;
+    border-radius: 8px;
+    background: var(--gradient-primary);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: inherit;
+}
+
+input[type="file"]::file-selector-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 180, 162, 0.3);
+}
+
+/* Hidden Input */
+input[type="hidden"] {
+    display: none;
+}
+
+/* =====================================================
+   IMAGE PREVIEW
+   ===================================================== */
+
+.image-preview {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+.image-preview label {
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 10px;
+}
+
+.image-preview img {
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    border: 3px solid var(--border-color);
+}
+
+.image-preview img:hover {
+    transform: scale(1.05);
+}
+
+/* Profile Image Specific */
+img[style*="border-radius:50%"] {
+    border: 3px solid var(--primary-peach) !important;
+    box-shadow: 0 4px 20px rgba(255, 180, 162, 0.3) !important;
+}
+
+/* =====================================================
+   BUTTONS
+   ===================================================== */
+
+button[type="submit"] {
+    background: var(--gradient-primary);
+    color: white;
+    padding: 16px 32px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: inherit;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(255, 180, 162, 0.3);
+}
+
+button[type="submit"]::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+button[type="submit"]:hover::before {
+    left: 100%;
+}
+
+button[type="submit"]:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(255, 180, 162, 0.4);
+}
+
+button[type="submit"]:active {
+    transform: translateY(-1px);
+}
+
+button[type="submit"]::after {
+    content: "✨";
+    margin-left: 10px;
+    font-size: 1.2rem;
+    display: inline-block;
+    animation: sparkle 2s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Loading State */
+button[type="submit"]:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+button[type="submit"]:disabled:hover {
+    transform: none;
+    box-shadow: 0 4px 15px rgba(255, 180, 162, 0.3);
+}
+
+/* =====================================================
+   FORM VALIDATION STATES
+   ===================================================== */
+
+/* Error States */
+.error,
+input.error,
+textarea.error {
+    border-color: var(--danger) !important;
+    background: rgba(255, 107, 107, 0.05) !important;
+}
+
+.error:focus,
+input.error:focus,
+textarea.error:focus {
+    border-color: var(--danger) !important;
+    box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.1) !important;
+}
+
+/* Success States */
+.success,
+input.success,
+textarea.success {
+    border-color: var(--success) !important;
+    background: rgba(78, 205, 196, 0.05) !important;
+}
+
+.success:focus,
+input.success:focus,
+textarea.success:focus {
+    border-color: var(--success) !important;
+    box-shadow: 0 0 0 4px rgba(78, 205, 196, 0.1) !important;
+}
+
+/* =====================================================
+   RESPONSIVE DESIGN
+   ===================================================== */
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 25px 20px;
+        margin-top: 15px;
+        border-radius: 15px;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="number"],
+    textarea,
+    input[type="file"] {
+        padding: 12px 16px;
+        font-size: 0.95rem;
+    }
+    
+    button[type="submit"] {
+        padding: 14px 28px;
+        font-size: 1rem;
+    }
+    
+    .image-preview img {
+        max-width: 120px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px 15px;
+    }
+    
+    h2 {
+        font-size: 1.6rem;
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="number"],
+    textarea,
+    input[type="file"] {
+        padding: 10px 14px;
+        font-size: 0.9rem;
+    }
+    
+    button[type="submit"] {
+        padding: 12px 24px;
+        font-size: 0.95rem;
+    }
+    
+    .image-preview img {
+        max-width: 100px;
+    }
+    
+    input[type="file"]::file-selector-button {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
+}
+
+/* =====================================================
+   ACCESSIBILITY
+   ===================================================== */
+
+button[type="submit"]:focus,
+input:focus,
+textarea:focus {
+    outline: 2px solid var(--primary-peach);
+    outline-offset: 2px;
+}
+
+button[type="submit"]:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+    outline: 2px solid var(--primary-peach);
+    outline-offset: 2px;
+}
+
+/* Screen reader only */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="number"],
+    textarea,
+    input[type="file"],
+    button[type="submit"] {
+        border: 2px solid currentColor;
+    }
+    
+    .image-preview img {
+        border: 2px solid currentColor;
+    }
+}
+
+/* =====================================================
+   PRINT STYLES
+   ===================================================== */
+
+@media print {
+    body {
+        background: white;
+        padding: 0;
+    }
+    
+    .container {
+        box-shadow: none;
+        border-radius: 0;
+        padding: 20px;
+    }
+    
+    .container::before {
+        background: #ccc;
+    }
+    
+    h2 {
+        color: #333;
+        text-shadow: none;
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="number"],
+    textarea {
+        border: 1px solid #ccc;
+        background: white;
+    }
+    
+    button[type="submit"],
+    input[type="file"] {
+        display: none;
+    }
+}
